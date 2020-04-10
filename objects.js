@@ -50,10 +50,16 @@
  * @param {number} amountOfSunNeeded - 0 to 10, representing the amount of sun needed
  */
 function createPlant(type, isPerennial, leafDescription, leafColor, flowerColor, flowerDescription, gallonsWaterPerWeek, amountOfSunNeeded) {
-    let plant = {};
-    // Your Code Here!
-    // Create a plant object, populate it with all of the values from the arguments, and return it.
-    // Hint: You can name every key in your object the same as the variable from the argument to this function.  
+    let plant = {
+        type: type,
+        isPerennial: isPerennial,
+        leafDescription: leafDescription,
+        leafColor: leafColor,
+        flowerColor: flowerColor,
+        flowerDescription: flowerDescription,
+        gallonsWaterPerWeek: gallonsWaterPerWeek,
+        amountOfSunNeeded: amountOfSunNeeded
+    }; 
     return plant;
 }
 
@@ -74,7 +80,7 @@ function createPlant(type, isPerennial, leafDescription, leafColor, flowerColor,
     The rose arbor should contain all of the roses.
     The perennial garden should contain only perennials.  However, the perennial garden doesn't get that much sun.  
     No plants with an amountOfSunNeeded greater than 5 should be placed in the perennial garden.
-    The rest of the plans should be placed in the slop planters.
+    The rest of the plans should be placed in the slope planters.
 */
 
 function createEstate() {
@@ -86,6 +92,7 @@ function createEstate() {
     return estate;
 }
 
+
 /**
  * addPlantToEstate
  * @param {Object} estate - The estate object - created by calling createEstate()
@@ -94,7 +101,20 @@ function createEstate() {
  * This should add the given plant into one of the three arrays within the estate.
  */
 function addPlantToEstate(estate, plant) {
-    // Your Code Here!
+    if(plant.type === "rose"){
+        estate.roseArbor.push(plant);
+        return plant;
+    }
+    if(plant.isPerennial === true && plant.amountOfSunNeeded <= 5){
+        estate.perennialGarden.push(plant);
+        return plant;
+
+    }else{
+        estate.slopePlanters.push(plant);
+        return plant;
+    } 
+}
+ // Your Code Here!
     // decide where to put the plant according to its features
     /*
     if the plant is a rose
@@ -103,8 +123,6 @@ function addPlantToEstate(estate, plant) {
         add it to the Perennial Garden
     else add it to the Slope Planters
     */
-}
-
 /* ------------------------------------------------
     Exercise Three
 
