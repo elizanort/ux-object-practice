@@ -186,7 +186,7 @@ function describeGarden(gardenName, listOfPlants) {
  * This should describe every garden and every plant.            
  */
 function describeEstate(estate) {
-    const estateLength = Object.keys(estate).length
+    const estateLength = Object.keys(estate).length;
     let description = `The estate has ${estateLength} gardens.`;
     for (let gardenName in estate){
         let listofPlants = estate[gardenName];
@@ -223,21 +223,11 @@ function calculateWaterUsagePerWeek(estate) {
         for (let plant of garden){
             numGallons += plant.gallonsWaterPerWeek;
         }
-    let newNumGallons = Math.floor(numGallons);
-    return newNumGallons;
     }
+let newNumGallons = Math.floor(numGallons);
+return newNumGallons;
 }
 
-// function calculateWaterUsagePerWeek(estate) {
-//     let numGallons = 0;
-//     let gardenItems = [gallonsWaterPerWeek];
-//     for (let gardenItems in estate){
-//         for (let gallonsWaterPerWeek in gardenName){
-//         numGallons += gallonsWaterPerWeek;
-//         }
-//     }
-//     return numGallons;
-// }
 
 /* ---------------------------------------------------------------------------
     Exercise Five
@@ -269,19 +259,20 @@ function calculateWaterUsagePerWeek(estate) {
  * 
  */
 function cloneRose(plant) {
-    // let clone = {};
-    // plant = Object.keys(plant)
-    // for(let plantInfo of plant){
-    //     copy[plantInfo] = plant[plantInfo];
-    // }
-    // Your Code Here!
-    // Given a plant, clone it and return the new plant
-    // Hint: You do this in the Reading!  copyObject...
-
+    let clone = {};
+    let plantItems = Object.keys(plant);
+    
+    for(let plantInfo of plantItems){
+        clone[plantInfo] = plant[plantInfo];
+    }
+    
     changeColorOfPlant(clone);
     return clone;
 }
 
+// Your Code Here!
+    // Given a plant, clone it and return the new plant
+    // Hint: You do this in the Reading!  copyObject...
 
 // 
 // DO NOT CHANGE ANYTHING IN THIS
@@ -326,6 +317,16 @@ function changeColorOfPlant(plant) {
  */
 
 function cloneAllTheRosesAndChangeTheirColors(estate) {
+    let clonedRoses = [];
+    let newRoses = [];
+    let estateRoses = estate.roseGarden;
+    for (everyRose in estateRoses){
+        if (everyRose === !hasNoRuinedRoses){
+            clonedRoses.push(cloneRose(everyRose))
+        }
+    
+    };
+
     // Your Code Here! 
 
     // for each rose...
@@ -436,7 +437,6 @@ function cloneAllTheRosesAndChangeTheirColors(estate) {
             rose5Copy.isPerennial === rose5.isPerennial &&
             rose5Copy.leafDescription === rose5.leafDescription &&
             rose5Copy.leafColor === rose5.leafColor &&
-            rose5Copy.flowerColor === rose5.flowerColor &&
             rose5Copy.flowerDescription === rose5.flowerDescription &&
             rose5Copy.gallonsWaterPerWeek === rose5.gallonsWaterPerWeek &&
             rose5Copy.amountOfSunNeeded === rose5.amountOfSunNeeded);
