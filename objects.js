@@ -317,16 +317,27 @@ function changeColorOfPlant(plant) {
  */
 
 function cloneAllTheRosesAndChangeTheirColors(estate) {
+
     let clonedRoses = [];
-    let newRoses = [];
-    let estateRoses = estate.roseGarden;
-    for (everyRose in estateRoses){
-        if (everyRose === !hasNoRuinedRoses){
-            clonedRoses.push(cloneRose(everyRose))
+    let estatePlants = Object.keys(estate)
+    
+    for (let i = 0; i < Object.keys(estate).length; i++){
+        let gardenName = Object.values(estate)[i];
+
+        for(let flower in gardenName){
+
+            let plant = gardenName[flower];
+            if (plant.type === "rose" && plant.isFlawed !== true){
+                clonedRoses.push(cloneRose(plant))
+            }   
         }
     
-    };
 
+        for (let flower in clonedRoses){
+            gardenName.push(clonedRoses[flower]);
+
+        }
+    };
     // Your Code Here! 
 
     // for each rose...
